@@ -1,3 +1,4 @@
+
 const { HttpError } = require('../../helpers');
 const { Contact } = require('../../models/contact');
 
@@ -25,6 +26,12 @@ const getAll = async (req, res) => {
     skip,
     limit,
   }).populate('owner', 'email');
+
+const { Contact } = require('../../models/contact');
+
+const getAll = async (req, res) => {
+  const result = await Contact.find({}, '-createdAt -updatedAt');
+
   res.json(result);
 };
 

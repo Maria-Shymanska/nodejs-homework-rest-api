@@ -2,7 +2,9 @@ const { Schema, model } = require('mongoose');
 const Joi = require('joi');
 const { hendleMongooseError } = require('../helpers');
 
+
 const emailRegexp = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+
 
 const contactSchema = new Schema(
   {
@@ -12,7 +14,9 @@ const contactSchema = new Schema(
     },
     email: {
       type: String,
+
       match: emailRegexp,
+
       required: true,
     },
     phone: {
@@ -23,11 +27,13 @@ const contactSchema = new Schema(
       type: Boolean,
       default: false,
     },
+
     owner: {
       type: Schema.Types.ObjectId,
       ref: 'user',
       require: true,
     },
+
   },
   { versionKey: false, timestamps: true }
 );
